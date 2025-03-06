@@ -2,7 +2,6 @@
 // getComputerChoice randomly returns the string "rock" "paper" or "scissors"
 function getComputerChoice() {
     let randomNumber = Math.floor((Math.random() * 100)); // Produces number from 0-99
-    console.log(randomNumber);
     // 3 choices returned based on random number (1/3 chance)
     if (randomNumber <= 33){ 
         return "rock";
@@ -15,7 +14,6 @@ function getComputerChoice() {
 }
 
 // Test what the function getComputerChoice returns
-console.log(getComputerChoice());
 
 // Create new function named getHumanChoice
 // getHumanChoice returns choice based on user input
@@ -25,7 +23,6 @@ function getHumanChoice() {
 }
 
 // Test what the function getHumanChoice returns
-console.log(getHumanChoice());
 
 // Create two variables humanScore and computerScore in global scope, initalize with value of 0
 let humanScore = 0;
@@ -33,7 +30,9 @@ let computerScore = 0;
 
 // Create a new function named playRound, define two parameters: humanChoice and computerChoice
 function playRound (humanChoice, computerChoice) {
-    humanChoice = humanChoice.toLowerCase; // Make humanChoice parameter case-insensitive
+    humanChoice = humanChoice.toLowerCase(); // Make humanChoice parameter case-insensitive
+    console.log("Computer selected: " + computerChoice);
+    console.log("You selected: " + humanChoice);
     // playRound function should output to console.log a string value representing winner e.g. "You lose! Paper beats rock!"
     if (humanChoice === "rock" && computerChoice === "paper") {
         console.log("You lose! Paper beats rock!");
@@ -69,3 +68,4 @@ const computerSelection = getComputerChoice();
 
 playRound(humanSelection, computerSelection);
 
+// Create new function named playGame
