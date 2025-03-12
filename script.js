@@ -13,17 +13,12 @@ function getComputerChoice() {
      
 }
 
-
 // Create new function named getHumanChoice
 // getHumanChoice returns choice based on user input
 function getHumanChoice() {
     let humanChoice = prompt("Choose rock, paper or scissors: ");
     return humanChoice;
 }
-
-
-
-
 
 let humanSelection = "";
 let computerSelection = "";
@@ -62,27 +57,44 @@ function playGame() {
             console.log("You lose! Rock beats scissors!");
             computerScore++;
         } else if (humanChoice === "scissors" && computerChoice == "paper") {
-            console.log("You lose! Paper beats rock!");
-            computerScore++;
+            console.log("You win! Scissors beats paper!");
+            humanScore++;
         } else {
             console.log("Something went wrong.");
         }
     }
 
     // Play five rounds
-    for (i = 1; i <= 5; i++) {
-        humanSelection = getHumanChoice();
-        computerSelection = getComputerChoice();
-        playRound(humanSelection, computerSelection);
-    }
-    // Display final results
-    if (computerScore > humanScore) {
-        finalResult = "\nYou lose :(";
-    } else {
-        finalResult = "\nYou win! :D";
-    }
+    // for (i = 1; i <= 5; i++) {
+    //     humanSelection = getHumanChoice();
+    //     computerSelection = getComputerChoice();
+    //     playRound(humanSelection, computerSelection);
+    // }
+    
+    const rockBtn = document.querySelector("#rock");
+    rockBtn.addEventListener("click", () => {
+        playRound("rock", getComputerChoice());
+    });
 
-    console.log("Final score:\n Computer: " + computerScore + "\n Your Score:" + humanScore + finalResult);
+    const paperBtn = document.querySelector("#paper");
+    paperBtn.addEventListener("click", () => {
+        playRound("paper", getComputerChoice());
+    });
+
+    const scissorsBtn = document.querySelector("#scissors");
+    scissorsBtn.addEventListener("click", () => {
+        playRound("scissors", getComputerChoice());
+    });
+
+    // Display final results
+    // if (computerScore > humanScore) {
+    //     finalResult = "\nYou lose :(";
+    // } else {
+    //     finalResult = "\nYou win! :D";
+    // }
+
+    // console.log("Final score:\n Computer: " + computerScore + "\n Your Score:" + humanScore + finalResult);
 }
 
 playGame();
+
