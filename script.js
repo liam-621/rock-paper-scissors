@@ -28,40 +28,49 @@ function playGame() {
     let humanScore = 0;
     let computerScore = 0;
 
+    const results = document.querySelector("#Results");
+    const roundResult = document.createElement("p")
+    const runningScore = document.createElement("p"); 
+    results.appendChild(roundResult);
+    results.appendChild(runningScore);
+
     // Create a new function named playRound, define two parameters: humanChoice and computerChoice
     function playRound (humanChoice, computerChoice) {
         humanChoice = humanChoice.toLowerCase(); // Make humanChoice parameter case-insensitive
         console.log("Computer selected: " + computerChoice);
         console.log("You selected: " + humanChoice);
 
+
         // playRound function should output to console.log a string value representing winner e.g. "You lose! Paper beats rock!"
         if (humanChoice === "rock" && computerChoice === "paper") {
-            console.log("You lose! Paper beats rock!");
+            roundResult.textContent = "You lose! Paper beats rock!";
             computerScore++;
         } else if (humanChoice === "rock" && computerChoice === "scissors") {
-            console.log("You win! Rock beats scissors!");
+            roundResult.textContent = "You win! Rock beats scissors!";
             humanScore++;
         } else if (humanChoice === "rock" && computerChoice === "rock") {
-            console.log("You tie!");
+            roundResult.textContent = "You tie!";
         } else if (humanChoice === "paper" && computerChoice === "rock") {
-            console.log("You win! Paper beats rock!");
+            roundResult.textContent = "You win! Paper beats rock!";
             humanScore++;
         } else if (humanChoice === "paper" && computerChoice === "paper") {
-            console.log("You tie!");
+            roundResult.textContent = "You tie!";
         } else if (humanChoice === "paper" && computerChoice === "scissors") {
-            console.log("You lose! Scissors beats paper!");
+            roundResult.textContent = "You lose! Scissors beats paper!";
             computerScore++;
         } else if (humanChoice === "scissors" && computerChoice == "scissors") {
-            console.log("You tie!");
+            roundResult.textContent = "You tie!";
         } else if (humanChoice === "scissors" && computerChoice == "rock") {
-            console.log("You lose! Rock beats scissors!");
+            roundResult.textContent = "You lose! Rock beats scissors!";
             computerScore++;
         } else if (humanChoice === "scissors" && computerChoice == "paper") {
-            console.log("You win! Scissors beats paper!");
+            roundResult.textContent = "You win! Scissors beats paper!";
             humanScore++;
         } else {
-            console.log("Something went wrong.");
+            roundResult.textContent = "Something went wrong.";
         }
+        
+        runningScore.textContent = `Human Score: ${humanScore}\n Computer Score: ${computerScore}`;
     }
 
     // Play five rounds
@@ -85,6 +94,9 @@ function playGame() {
     scissorsBtn.addEventListener("click", () => {
         playRound("scissors", getComputerChoice());
     });
+
+    
+    
 
     // Display final results
     // if (computerScore > humanScore) {
